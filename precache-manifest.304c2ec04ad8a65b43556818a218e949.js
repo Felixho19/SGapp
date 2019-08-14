@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0a0be3adcbad8f8edfa191c57832ed0f",
+    "revision": "73879050c600332b42c25ff83fc25553",
     "url": "/SGApp/index.html"
   },
   {
