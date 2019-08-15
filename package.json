@@ -23,6 +23,7 @@
     "react-images-upload": "^1.2.6",
     "react-images-uploader": "^1.2.0-rc1",
     "react-native-elements": "^1.1.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-toggle-button": "^2.2.0",
     "reactstrap": "^8.0.0"
