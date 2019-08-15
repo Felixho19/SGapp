@@ -6,7 +6,7 @@ import FoodReservation from './components/FoodReservation';
 import Map from './components/Map';
 import Seat from './components/Seat';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
 
 class QRCodePage extends Component {
@@ -59,18 +59,21 @@ class App extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <Header />
           <Navigation />
-          <Route exact path="/foodReservation"
-            component={FoodReservation} />
-          <Route exact path="/map"
-            component={Map} />
-          <Route exact path="/seat"
-            component={Seat} />
-          <Route exact path="/QRcode"
-            component={QRCodePage} />
+          <Switch>
+            <Route exact path="/foodReservation"
+              component={FoodReservation} />
+            <Route exact path="/map"
+              component={Map} />
+            <Route exact path="/seat"
+              component={Seat} />
+            <Route exact path="/QRcode"
+              component={QRCodePage} />
+            <Route component={() => (<div></div>)}/>
+          </Switch>
           <Footer />
         </div>
       </Router>
