@@ -16,6 +16,7 @@ class Navigation extends React.Component {
                         <Nav.Link as={Link} to="/foodReservation">Order Food</Nav.Link>
                         <Nav.Link as={Link} to="/map">Map</Nav.Link>
                         <Nav.Link as={Link} to="/seat">Seat</Nav.Link>
+                        <Nav.Link as={Link} to="/QRcode">Order information (debug)</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>

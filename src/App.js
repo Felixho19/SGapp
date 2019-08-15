@@ -7,13 +7,49 @@ import Map from './components/Map';
 import Seat from './components/Seat';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { QRCode } from 'react-qr-svg';
 
-class QRCode extends Component {
+class QRCodePage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      custNumber : '1'
+    }
   }
   render(){
-    return(<div></div>);
+    const styles = {
+      root: {
+        fontFamily: 'sans-serif',
+      },
+      h1: {
+        textAlign: 'center',
+      },
+      qrcode: {
+        textAlign: 'center',
+      },
+    };
+
+    return(
+      <div style={styles.root}>
+      <h1 style={styles.h1}>Lounge Reservation</h1>
+      <div style={styles.qrcode}>
+        <QRCode
+          level="Q"
+          style={{ width: 256 }}
+          value={JSON.stringify({
+            firstName: "Tony",
+            lastName: "Mok",
+            class: "First Class",
+            flight: "SQ865",
+            departureTime: "18:50",
+            destination: "Singapore Changi Airport (SIN)",
+            number: this.state.custNumber
+          })}
+        />
+      </div>
+
+    </div>
+    );
   }
 }
 
@@ -33,8 +69,8 @@ class App extends Component {
             component={Map} />
           <Route exact path="/seat"
             component={Seat} />
-          <Route exact path="/QRcode/:hash"
-            component={QRCode} />
+          <Route exact path="/QRcode"
+            component={QRCodePage} />
           <Footer />
         </div>
       </Router>
