@@ -8,12 +8,11 @@ class Navigation extends React.Component {
     }
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Lounge Service</Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg" bg="info" variant="light">
+                <Navbar.Brand as={Link} to="/">Lounge Service</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/foodReservation">Order Food</Nav.Link>
                         <Nav.Link as={Link} to="/map">Map</Nav.Link>
                         <Nav.Link as={Link} to="/seat">Seat</Nav.Link>

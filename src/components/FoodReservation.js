@@ -64,18 +64,24 @@ class FoodReservation extends React.Component {
           } 
         });
         return (
-            <Container>
-            <Col xs={12}>
+        <div>
             <Navbar bg="light" expand="lg">
-              <Navbar.Brand href="#home">Food Pre-ordering</Navbar.Brand>
-                <Form inline>
-                  <FormControl type="text" placeholder="Name of food" />
-                  <Button className="text-center" variant="outline-success">Filter</Button>
+            <Navbar.Brand>Food Pre-ordering</Navbar.Brand>
+                <Form block> 
+                    <Row>
+                        <Col>
+                            <FormControl type="text" placeholder="Name of food" />
+                        </Col>
+                        <Col>
+                            <Button className="text-center" variant="outline-success">Filter</Button>
+                        </Col>
+                    </Row>
                 </Form>
             </Navbar>
-            </Col>
-            {cols}
-          </Container>
+            <Container> 
+                {cols}
+            </Container>
+        </div>
         );
     }
   }
