@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/SGApp/static/css/main.5d89e698.chunk.css",
-    "main.js": "/SGApp/static/js/main.f1c3cd18.chunk.js",
-    "main.js.map": "/SGApp/static/js/main.f1c3cd18.chunk.js.map",
-    "runtime~main.js": "/SGApp/static/js/runtime~main.93a218d6.js",
-    "runtime~main.js.map": "/SGApp/static/js/runtime~main.93a218d6.js.map",
-    "static/js/2.aea90397.chunk.js": "/SGApp/static/js/2.aea90397.chunk.js",
-    "static/js/2.aea90397.chunk.js.map": "/SGApp/static/js/2.aea90397.chunk.js.map",
-    "index.html": "/SGApp/index.html",
-    "precache-manifest.286967862c5469e0deee9b21922d2b4f.js": "/SGApp/precache-manifest.286967862c5469e0deee9b21922d2b4f.js",
-    "service-worker.js": "/SGApp/service-worker.js",
-    "static/css/main.5d89e698.chunk.css.map": "/SGApp/static/css/main.5d89e698.chunk.css.map",
-    "static/media/sample.jpg": "/SGApp/static/media/sample.5613a2ce.jpg"
+    "main.css": "/SGapp/static/css/main.5d89e698.chunk.css",
+    "main.js": "/SGapp/static/js/main.8b522571.chunk.js",
+    "main.js.map": "/SGapp/static/js/main.8b522571.chunk.js.map",
+    "runtime~main.js": "/SGapp/static/js/runtime~main.5be20453.js",
+    "runtime~main.js.map": "/SGapp/static/js/runtime~main.5be20453.js.map",
+    "static/js/2.aea90397.chunk.js": "/SGapp/static/js/2.aea90397.chunk.js",
+    "static/js/2.aea90397.chunk.js.map": "/SGapp/static/js/2.aea90397.chunk.js.map",
+    "index.html": "/SGapp/index.html",
+    "precache-manifest.21361ff68a5ade480ce6d8010a73decc.js": "/SGapp/precache-manifest.21361ff68a5ade480ce6d8010a73decc.js",
+    "service-worker.js": "/SGapp/service-worker.js",
+    "static/css/main.5d89e698.chunk.css.map": "/SGapp/static/css/main.5d89e698.chunk.css.map",
+    "static/media/sample.jpg": "/SGapp/static/media/sample.5613a2ce.jpg"
   }
 }
