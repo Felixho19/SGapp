@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import FoodReservation from './components/FoodReservation';
 import Map from './components/Map';
 import Seat from './components/Seat';
+import Homepage from './components/Homepage';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
@@ -72,7 +73,7 @@ class App extends Component {
               component={Seat} />
             <Route exact path="/QRcode"
               component={QRCodePage} />
-            <Route component={() => (<div></div>)}/>
+            <Route component={Homepage}/>
           </Switch>
           <Footer />
         </div>
