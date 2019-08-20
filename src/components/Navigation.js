@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+
+const Theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#1a237e'
+      }
+    }
+  });
 
 const useStyles = theme => ({
   root: {
     flexGrow: 1,
+    color: '#1a237e'
   },
   title: {
     flexGrow: 1,
+    fontFamily: 'arial',
     position: 'relative',
     marginRight: 0,
     width: '100%',
@@ -21,6 +34,7 @@ const useStyles = theme => ({
   },
   login: {
     position: 'relative',
+    fontFamily: 'arial',
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -34,24 +48,26 @@ class Navigation extends Component {
   render(){
     const { auth, classes } = this.props;
     return (
-        <div className={classes.root}>
-        <AppBar position="static" color="default">
-            <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.title}>
-                Good Morning
-            </Typography>
-            {!auth && (<Typography variant="h6" color="inherit" className={classes.login}>
-                Login or Register
-            </Typography>)}
-            </Toolbar>
-        </AppBar>
-        </div>
+        <ThemeProvider theme={Theme}>
+            <div className={classes.root}>
+            <AppBar position="static" color="primary">
+                <Toolbar>
+                <Typography variant="h6" color="inherit" className={classes.title}>
+                    Good Morning
+                </Typography>
+                {!auth && (<Typography component={Link} to="/login" variant="h6" color="inherit" className={classes.login}>
+                    Login or Register
+                </Typography>)}
+                </Toolbar>
+            </AppBar>
+            </div>
+        </ThemeProvider>
         );
     }
 }
 
 Navigation.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
   
 export default withStyles(useStyles)(Navigation);

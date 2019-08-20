@@ -21,7 +21,7 @@ class QRCodePage extends Component {
   render(){
     const styles = {
       root: {
-        fontFamily: 'sans-serif',
+        fontFamily: 'arial',
       },
       h1: {
         textAlign: 'center',
