@@ -1,18 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Image from 'material-ui-image';
+import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 import Logo from './img/logo.png';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
   root: {
     flexGrow: "-moz-initial",
   },
@@ -20,69 +20,82 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: "-moz-initial",
+    flexGrow: 1,
   },
 }));
 
-export default function Header() {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  function handleMenu(event) {
-    setAnchorEl(event.currentTarget);
+class Header extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      auth : true,
+      anchorEl : null,
+      open : Boolean(null)
+    };
+    this.handleClose = this.handleClose.bind(this);
+    this.handleMenu = this.handleMenu.bind(this);
+  }
+  handleMenu(event) {
+    this.setState({anchorEl: event.currentTarget, open: Boolean(event.currentTarget)});
   }
 
-  function handleClose() {
-    setAnchorEl(null);
+  handleClose() {
+    this.setState({anchorEl: null, open : Boolean(null)});
   }
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="#e0f7fa">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <img
-              src={Logo}
-              width="150"
-              height="54"
-              className="d-inline-block align-top"
-            />
-          </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+  render(){
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="#e0f7fa">
+          <Toolbar>
+            <Typography variant="h6" className={classes.title}>
+              <img
+                src={Logo}
+                width="150"
+                height="54"
+                className="d-inline-block align-top"
+              />
+            </Typography>
+            {this.state.auth && (
+              <div>
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={this.state.anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                </Menu>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
+
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(useStyles)(Header);
