@@ -1,7 +1,10 @@
 import React from 'react';
 import {Carousel} from 'react-bootstrap';
 import Navigation from './Navigation';
-import Holder from 'react-holder';
+import ppt1 from './img/ppt1.webp';
+import ppt2 from './img/ppt2.jpg';
+import ppt3 from './img/ppt3.webp';
+import 'holderjs';
 
 class Home extends React.Component {
     constructor(props) {
@@ -15,35 +18,41 @@ class Home extends React.Component {
             <Carousel>
                 <Carousel.Item>
                     <img
+                    height='400'
+                    width='800'
                     className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
+                    src={ppt1}
                     alt="First slide"
                     />
                     <Carousel.Caption>
-                    <h3>First slide label</h3>
+                    <h3>Singapore</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                    height='400'
+                    width='800'
                     className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Third slide"
+                    src={ppt2}
+                    alt="Second slide"
                     />
 
                     <Carousel.Caption>
-                    <h3>Second slide label</h3>
+                    <h3>Thailand</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                    height='400'
+                    width='800'
                     className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
+                    src={ppt3}
                     alt="Third slide"
                     />
                     <Carousel.Caption>
-                    <h3>Third slide label</h3>
+                    <h3>Cambodia</h3>
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>

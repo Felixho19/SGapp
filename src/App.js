@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
-
 import FoodReservation from './components/FoodReservation';
 import Map from './components/Map';
 import Seat from './components/Seat';
@@ -10,7 +9,7 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
-import Holder from 'react-holder';
+import 'holderjs';
 
 class QRCodePage extends Component {
   constructor(props) {

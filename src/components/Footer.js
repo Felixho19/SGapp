@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -25,7 +26,6 @@ class Footer extends Component {
   }
   setValue(v){
     this.setState({value:v});
-    //Link
   }
   render(){
   const { classes } = this.props;
@@ -38,11 +38,14 @@ class Footer extends Component {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+      <BottomNavigationAction component={Link}
+        to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search Flights" icon={<Search />} />
       <BottomNavigationAction label="Flight Status" icon={<Flight />} />
-      <BottomNavigationAction label="My Trips" icon={<CardTravel />} />
-      <BottomNavigationAction label="More" icon={<MoreHoriz />} />
+      <BottomNavigationAction component={Link} 
+        to="/login" label="My Trips" icon={<CardTravel />} />
+      <BottomNavigationAction component={Link} 
+        to="/foodReservation" label="More" icon={<MoreHoriz />} />
     </BottomNavigation>
   );
 }
