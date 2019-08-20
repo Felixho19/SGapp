@@ -13,7 +13,8 @@ import PropTypes from 'prop-types';
 
 const useStyles = {
   root: {
-    width: 500,
+    width: '100%',
+    justifyContent: 'center'
   },
 };
 
