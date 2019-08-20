@@ -80,7 +80,7 @@ class App extends Component {
             <Route exact path="/QRcode"
               component={QRCodePage} />
             <Route exact path="/login"
-              component={Login} />
+              component={() =>{return <Login setAuth={this.setAuth}/>}} />
             <Route component={Home} />
           </Switch>
           <Footer />

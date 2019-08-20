@@ -33,8 +33,8 @@ const useStyles = theme => ({
     }
   },
   login: {
-    position: 'relative',
     fontFamily: 'arial',
+    textAlign: 'right',
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {

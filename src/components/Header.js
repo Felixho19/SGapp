@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
+import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -47,7 +48,7 @@ class Header extends Component{
       <div className={classes.root}>
         <AppBar position="static" color="#e0f7fa">
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
+            <Typography component={Link} to="/" variant="h6" className={classes.title}>
               <img
                 src={Logo}
                 width="150"

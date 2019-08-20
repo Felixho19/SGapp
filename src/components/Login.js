@@ -100,7 +100,7 @@ class Login extends Component {
         this.setState({ ...this.state, [name]: event.target.checked });
     };
     render(){
-    const { auth, setAuth, classes } = this.props;
+    const { setAuth , classes } = this.props;
     return (
         <div>
         <AppBar position="static" color="default">
@@ -149,6 +149,7 @@ class Login extends Component {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={setAuth}
           >
             Log In
           </Button>

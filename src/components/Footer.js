@@ -8,6 +8,7 @@ import Flight from '@material-ui/icons/Flight';
 import Search from '@material-ui/icons/Search';
 import CardTravel from '@material-ui/icons/CardTravel';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
 import PropTypes from 'prop-types';
 
 const useStyles = {
@@ -42,10 +43,9 @@ class Footer extends Component {
         to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search Flights" icon={<Search />} />
       <BottomNavigationAction label="Flight Status" icon={<Flight />} />
-      <BottomNavigationAction component={Link} 
-        to="/login" label="My Trips" icon={<CardTravel />} />
-      <BottomNavigationAction component={Link} 
-        to="/foodReservation" label="More" icon={<MoreHoriz />} />
+      <BottomNavigationAction label="My Trips" icon={<CardTravel />} />
+      <BottomNavigationAction label="Foods" icon={<FastfoodIcon />} />
+      <BottomNavigationAction label="More" icon={<MoreHoriz />} />
     </BottomNavigation>
   );
 }
