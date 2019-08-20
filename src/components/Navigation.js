@@ -1,10 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -27,23 +28,30 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     }
     }
-}));
+});
 
-export default function Navigation() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.title}>
-            Good Morning
-          </Typography>
-          <Typography variant="h6" color="inherit" className={classes.login}>
-            Login or Register
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class Navigation extends Component {
+  render(){
+    const { auth, classes } = this.props;
+    return (
+        <div className={classes.root}>
+        <AppBar position="static" color="default">
+            <Toolbar>
+            <Typography variant="h6" color="inherit" className={classes.title}>
+                Good Morning
+            </Typography>
+            {!auth && (<Typography variant="h6" color="inherit" className={classes.login}>
+                Login or Register
+            </Typography>)}
+            </Toolbar>
+        </AppBar>
+        </div>
+        );
+    }
 }
+
+Navigation.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+export default withStyles(useStyles)(Navigation);

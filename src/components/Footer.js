@@ -1,33 +1,55 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import HomeIcon from '@material-ui/icons/Home';
+import Flight from '@material-ui/icons/Flight';
+import Search from '@material-ui/icons/Search';
+import CardTravel from '@material-ui/icons/CardTravel';
+import MoreHoriz from '@material-ui/icons/MoreHoriz';
+import PropTypes from 'prop-types';
 
-const useStyles = makeStyles({
+const useStyles = {
   root: {
     width: 500,
   },
-});
+};
 
-export default function Footer() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value : 0,
+    };
+    this.setValue = this.setValue.bind(this);
+  }
+  setValue(v){
+    this.setState({value:v});
+    //Link
+  }
+  render(){
+  const { classes } = this.props;
   return (
     <BottomNavigation
-      value={value}
+      value={this.state.value}
       onChange={(event, newValue) => {
-        setValue(newValue);
+        this.setValue(newValue);
       }}
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+      <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+      <BottomNavigationAction label="Search Flights" icon={<Search />} />
+      <BottomNavigationAction label="Flight Status" icon={<Flight />} />
+      <BottomNavigationAction label="My Trips" icon={<CardTravel />} />
+      <BottomNavigationAction label="More" icon={<MoreHoriz />} />
     </BottomNavigation>
   );
 }
+}
+
+Footer.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(useStyles)(Footer);

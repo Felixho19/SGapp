@@ -28,7 +28,6 @@ class Header extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      auth : true,
       anchorEl : null,
       open : Boolean(null)
     };
@@ -56,7 +55,7 @@ class Header extends Component{
                 className="d-inline-block align-top"
               />
             </Typography>
-            {this.state.auth && (
+            {this.props.auth && (
               <div>
                 <IconButton
                   aria-label="account of current user"

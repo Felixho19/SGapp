@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Navigation from './components/Navigation';
+
 import FoodReservation from './components/FoodReservation';
 import Map from './components/Map';
 import Seat from './components/Seat';
 import Home from './components/Homepage';
+import Login from './components/Login';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
+import Holder from 'react-holder';
 
 class QRCodePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      custNumber : '1'
+      custNumber : '1',
     }
   }
   render(){
@@ -57,13 +59,18 @@ class QRCodePage extends Component {
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      auth : false
+    }
+  }
+  setAuth(){
+    this.setState({auth:!this.state.auth});
   }
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
-          <Header />
-          <Navigation />
+          <Header auth={this.state.auth} />
           <Switch>
             <Route exact path="/foodReservation"
               component={FoodReservation} />
@@ -73,7 +80,9 @@ class App extends Component {
               component={Seat} />
             <Route exact path="/QRcode"
               component={QRCodePage} />
-            <Route component={Home}/>
+            <Route exact path="/login"
+              component={Login} />
+            <Route component={Home} />
           </Switch>
           <Footer />
         </div>

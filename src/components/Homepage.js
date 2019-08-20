@@ -1,5 +1,6 @@
 import React from 'react';
 import {Carousel} from 'react-bootstrap';
+import Navigation from './Navigation';
 import Holder from 'react-holder';
 
 class Home extends React.Component {
@@ -7,7 +8,10 @@ class Home extends React.Component {
         super(props);
     }
     render() {
+        const {auth} = this.props;
         return (
+            <div>
+            <Navigation auth={auth} />
             <Carousel>
                 <Carousel.Item>
                     <img
@@ -44,6 +48,7 @@ class Home extends React.Component {
                     </Carousel.Caption>
                 </Carousel.Item>
                 </Carousel>
+                </div>
         );
     }
   }
