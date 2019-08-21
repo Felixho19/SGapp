@@ -9,7 +9,6 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
-import 'holderjs';
 
 class QRCodePage extends Component {
   constructor(props) {
