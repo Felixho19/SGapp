@@ -8,11 +8,13 @@ import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import BgImage from './img/login_bg.jpg';
 
 const IOSSwitch = withStyles(theme => ({
     root: {
@@ -66,9 +68,20 @@ const IOSSwitch = withStyles(theme => ({
     );
   });
 
+const Theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#1a237e'
+      }
+    }
+  });
+
 const useStyles = theme => ({
   root: {
     margin: '0 auto',
+  },
+  main: {
+    backgroundImage: `url(${BgImage})`,
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -103,14 +116,16 @@ class Login extends Component {
     const { setAuth , classes } = this.props;
     return (
         <div>
-        <AppBar position="static" color="default">
+        <ThemeProvider theme={Theme}>
+        <AppBar position="static" color="primary">
             <Toolbar className={classes.root}>
             <Typography variant="h6" color="inherit">
                 Login
             </Typography>
             </Toolbar>
         </AppBar>
-        <Container component="main" maxWidth="xs">
+        </ThemeProvider>
+        <Container component="main" maxWidth="xs" className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
         <form className={classes.form} noValidate>
@@ -166,6 +181,7 @@ class Login extends Component {
             </Grid>
           </Grid>
         </form>
+        <CssBaseline />
       </div></Container>
         </div>
         );
