@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link as RouterLink} from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -40,12 +40,12 @@ class Footer extends Component {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction component={Link}
+      <BottomNavigationAction component={RouterLink}
         to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search Flights" icon={<Search />} />
       <BottomNavigationAction label="Flight Status" icon={<Flight />} />
       <BottomNavigationAction label="My Trips" icon={<CardTravel />} />
-      <BottomNavigationAction label="Foods" icon={<FastfoodIcon />} />
+      <BottomNavigationAction component={RouterLink} to='/food' label="Foods" icon={<FastfoodIcon />} />
       <BottomNavigationAction label="More" icon={<MoreHoriz />} />
     </BottomNavigation>
   );

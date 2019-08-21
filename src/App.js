@@ -70,7 +70,7 @@ class App extends Component {
         <div className="App">
           <Header auth={this.state.auth} />
           <Switch>
-            <Route exact path="/foodReservation"
+            <Route exact path="/food"
               component={FoodReservation} />
             <Route exact path="/map"
               component={Map} />
