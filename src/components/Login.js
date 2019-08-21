@@ -14,7 +14,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import BgImage from './img/login_bg.jpg';
+
 
 const IOSSwitch = withStyles(theme => ({
     root: {
@@ -79,9 +79,6 @@ const Theme = createMuiTheme({
 const useStyles = theme => ({
   root: {
     margin: '0 auto',
-  },
-  main: {
-    backgroundImage: `url(${BgImage})`,
   },
   paper: {
     marginTop: theme.spacing(8),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, CssBaseline } from '@material-ui/core';
 import { fade, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -16,47 +16,19 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-const foods = [
-    { 
-      id : 1,
-      name : "Apple",
-      desc : "This is apple."
-    },
-    { 
-      id : 2,
-      name : "Banana",
-      desc : "This is banana."
-    },
-    { 
-      id : 3,
-      name : "Coffee",
-      desc : "This is coffee."
-    },
-    { 
-      id : 4,
-      name : "Duck",
-      desc : "This is duck."
-    },
-    { 
-      id : 5,
-      name : "Duck",
-      desc : "This is duck."
-    },
-    { 
-      id : 6,
-      name : "Duck",
-      desc : "This is duck."
-    }
-  ];
+import Rank from './Rank';
+
 const Theme = createMuiTheme({
     palette: {
       primary: {
-        main: '#FFFFFF'
+        main: '#1a237e'
       },
       secondary: {
         main: '#ECEFF1'
@@ -135,23 +107,34 @@ const useStyles = theme => ({
     height: 140,
   },
   deck: {
-    justifyContent: 'center'
+    justifyContent: 'center' 
+  },
+  rankBar: {
+    backgroundColor: '#5c6bc0'
   }
 });
 class FoodReservation extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+          open : false
+        };
+    }
+    handleClick(){
+      this.setState({open: !this.state.open});
+    }
+    handleClickAway(){
+      this.setState({open: false});
     }
     render() {
-      const cards = [];
       const { classes } = this.props;
       return(
         <ThemeProvider theme={Theme}>
             <div className={classes.root}>
             <AppBar position="static" color="primary">
                 <Toolbar>
-                <Typography variant="h7" color="inherit" className={classes.title}>
-                    Hong Kong
+                <Typography variant="h5" color="default" className={classes.title}>
+                  Hong Kong
                 </Typography>
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
@@ -169,13 +152,13 @@ class FoodReservation extends React.Component {
                 </Toolbar>
             </AppBar>
             </div>
-            <Toolbar>
-            <Typography variant="h5" color="inherit" className={classes.title}>
-                Recommend dishes
-            </Typography>
-            <Typography variant="h7" color="secondary" className={classes.right_most}>
-                See All
-            </Typography>
+            <Toolbar className={classes.rankBar}>
+              <Typography variant="h5" color="inherit" className={classes.title}>
+                  Recommend dishes
+              </Typography>
+              <Typography variant="h7" color="secondary" className={classes.right_most}>
+                  See All
+              </Typography>
             </Toolbar>
             <Grid
               container
@@ -192,35 +175,94 @@ class FoodReservation extends React.Component {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Lizard
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
+                    Dish1's name
                   </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
-                  Share
+                  Learn More
                 </Button>
+              </CardActions>
+            </Card>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={Dish1}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Dish1's name
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
                 <Button size="small" color="primary">
                   Learn More
                 </Button>
               </CardActions>
             </Card>
             </Grid>
-            <Toolbar>
-            <Typography variant="h5" color="inherit" className={classes.title}>
-                Chart
-            </Typography>
-            <Typography variant="h6" color="secondary" className={classes.subTitle}>
-                Most popular
-            </Typography>
-            <Typography variant="h7" color="secondary" className={classes.rightMost}>
-                See All
-            </Typography>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={Dish1}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Dish1's name
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={Dish1}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Dish1's name
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+            </Grid>
+            <CssBaseline/>
+            <Toolbar className={classes.rankBar}>
+              <Typography variant="h5" color="inherit" className={classes.title}>
+                  Chart
+              </Typography>
+              <Typography variant="h6" color="secondary" className={classes.subTitle}>
+                  Most popular
+              </Typography>
+              <Typography variant="h7" color="secondary" className={classes.rightMost}>
+                  See All
+              </Typography>
             </Toolbar>
+            <Rank />
         </ThemeProvider>
       );
     }

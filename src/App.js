@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
+import BgImage from './components/img/login_bg.jpg';
 
 class QRCodePage extends Component {
   constructor(props) {
@@ -65,9 +66,14 @@ class App extends Component {
     this.setState({auth:!this.state.auth});
   }
   render() {
+    const styles = {
+      main: {
+        backgroundImage: `url(${BgImage})`,
+      },
+    };
     return (
       <Router basename={process.env.PUBLIC_URL}>
-        <div className="App">
+        <div className="App" style={styles.main}>
           <Header auth={this.state.auth} />
           <Switch>
             <Route exact path="/food"
