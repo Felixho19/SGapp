@@ -2,11 +2,22 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import { fade, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+
+import Dish1 from './img/food1.jpg';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
@@ -117,6 +128,15 @@ const useStyles = theme => ({
       width: 200,
     },
   },
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+  deck: {
+    justifyContent: 'center'
+  }
 });
 class FoodReservation extends React.Component {
     constructor(props) {
@@ -157,7 +177,39 @@ class FoodReservation extends React.Component {
                 See All
             </Typography>
             </Toolbar>
-            {cards}
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+            >
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={Dish1}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Lizard
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                    across all continents except Antarctica
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  Share
+                </Button>
+                <Button size="small" color="primary">
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+            </Grid>
             <Toolbar>
             <Typography variant="h5" color="inherit" className={classes.title}>
                 Chart
