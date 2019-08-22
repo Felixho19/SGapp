@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SGapp/static/css/main.e9639a40.chunk.css",
-    "main.js": "/SGapp/static/js/main.4a5efdbe.chunk.js",
-    "main.js.map": "/SGapp/static/js/main.4a5efdbe.chunk.js.map",
+    "main.js": "/SGapp/static/js/main.a1291afa.chunk.js",
+    "main.js.map": "/SGapp/static/js/main.a1291afa.chunk.js.map",
     "runtime~main.js": "/SGapp/static/js/runtime~main.5be20453.js",
     "runtime~main.js.map": "/SGapp/static/js/runtime~main.5be20453.js.map",
     "static/js/2.65c97a12.chunk.js": "/SGapp/static/js/2.65c97a12.chunk.js",
     "static/js/2.65c97a12.chunk.js.map": "/SGapp/static/js/2.65c97a12.chunk.js.map",
     "index.html": "/SGapp/index.html",
-    "precache-manifest.d2dca8af19aedd861c1430e4397a4049.js": "/SGapp/precache-manifest.d2dca8af19aedd861c1430e4397a4049.js",
+    "precache-manifest.54f5d144e7ab55102a5d465345addc3f.js": "/SGapp/precache-manifest.54f5d144e7ab55102a5d465345addc3f.js",
     "service-worker.js": "/SGapp/service-worker.js",
     "static/css/main.e9639a40.chunk.css.map": "/SGapp/static/css/main.e9639a40.chunk.css.map",
     "static/media/food1.jpg": "/SGapp/static/media/food1.50f32ef6.jpg",
