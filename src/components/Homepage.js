@@ -1,6 +1,7 @@
 import React from 'react';
 import {Carousel} from 'react-bootstrap';
 import Navigation from './Navigation';
+import Header from './Header';
 import ppt1 from './img/ppt1.webp';
 import ppt2 from './img/ppt2.jpg';
 import ppt3 from './img/ppt3.webp';
@@ -11,7 +12,7 @@ class Home extends React.Component {
         super(props);
     }
     render() {
-        const {auth} = this.props;
+        const auth = this.props.location === undefined ? false : this.props.location.auth;
         return (
             <div>
             <Navigation auth={auth} />

@@ -224,7 +224,7 @@ class FoodList extends React.Component {
   }
 }
 
-class FoodReservation extends React.Component {
+class FoodDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -292,8 +292,8 @@ class FoodReservation extends React.Component {
     }
   }
 
-FoodReservation.propTypes = {
+FoodDetail.propTypes = {
     classes: PropTypes.object.isRequired,
 };
   
-export default withStyles(useStyles)(FoodReservation);
+export default withStyles(useStyles)(FoodDetail);

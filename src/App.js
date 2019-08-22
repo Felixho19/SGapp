@@ -62,8 +62,8 @@ class App extends Component {
       auth : false
     }
   }
-  setAuth(){
-    this.setState({auth:!this.state.auth});
+  setAuth(b){
+    this.setState({auth: b});
   }
   render() {
     const styles = {
@@ -85,7 +85,7 @@ class App extends Component {
             <Route exact path="/QRcode"
               component={QRCodePage} />
             <Route exact path="/login"
-              component={() =>{return <Login setAuth={this.setAuth}/>}} />
+              component={Login} />
             <Route component={Home} />
           </Switch>
           <Footer />

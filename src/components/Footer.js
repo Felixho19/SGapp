@@ -40,8 +40,7 @@ class Footer extends Component {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction component={RouterLink}
-        to="/" label="Home" icon={<HomeIcon />} />
+      <BottomNavigationAction component={RouterLink} to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search Flights" icon={<Search />} />
       <BottomNavigationAction label="Flight Status" icon={<Flight />} />
       <BottomNavigationAction label="My Trips" icon={<CardTravel />} />

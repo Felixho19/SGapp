@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -110,7 +110,7 @@ class Login extends Component {
         this.setState({ ...this.state, [name]: event.target.checked });
     };
     render(){
-    const { setAuth , classes } = this.props;
+    const { classes } = this.props;
     return (
         <div>
         <ThemeProvider theme={Theme}>
@@ -155,16 +155,19 @@ class Login extends Component {
               />}
             label="Stay logged in?"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={setAuth}
-          >
-            Log In
-          </Button>
+          <Link to={{
+            pathname: '/',
+            auth: true
+            }}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Log In
+            </Button>
+          </Link>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
