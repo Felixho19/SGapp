@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button , Grid, Chip, GridListTileBar, GridListTile, GridList, Typography } from '@material-ui/core';
+import { withStyles, Button, Grid, Chip, GridListTileBar, GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Dish1 from './img/food1.jpg';
@@ -22,6 +22,18 @@ const useStyles = theme => ({
   root: {
     flexGrow: 1,
     padding: theme.spacing(0, 3),
+  },
+  modal: {
+    display: 'flex',
+    direction: "column",
+    justify: "center",
+    alignItems: "flex-end",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2),
   },
   rootChip: {
     display: 'flex',
@@ -66,8 +78,17 @@ const useStyles = theme => ({
 class FoodDetail extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          open: false
+        };
     }
+    handleOpen = () => {
+      this.setState({open:true});
+    };
+  
+    handleClose = () => {
+      this.setState({open:false});
+    };
     render() {
       const { classes } = this.props;
       return(
@@ -100,9 +121,28 @@ class FoodDetail extends React.Component {
                         <Typography variant="h6">Action</Typography>
                     </Grid>
                     <Grid container>
-                    <Button variant="contained" color="primary" className={classes.button}>
+                    <Button onClick={this.handleOpen.bind(this)} variant="contained" color="primary" className={classes.button}>
                         Order Now
                     </Button>
+                    <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className={classes.modal}
+                        open={this.state.open}
+                        onClose={this.handleClose.bind(this)}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                          timeout: 500,
+                        }}
+                      >
+                        <Fade in={this.state.open}>
+                          <div className={classes.paper}>
+                            <h5 id="transition-modal-title">Date</h5>
+                            
+                          </div>
+                        </Fade>
+                      </Modal>
                     </Grid>
                   </Grid>
                 </Grid>
