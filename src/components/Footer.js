@@ -43,9 +43,7 @@ class Footer extends Component {
       <BottomNavigationAction component={RouterLink} to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search" icon={<Search />} />
       <BottomNavigationAction label="Flights" icon={<Flight />} />
-      <BottomNavigationAction label="My Trips" icon={<CardTravel />} />
       <BottomNavigationAction component={RouterLink} to='/food' label="Foods" icon={<FastfoodIcon />} />
-      <BottomNavigationAction label="More" icon={<MoreHoriz />} />
     </BottomNavigation>
   );
 }
