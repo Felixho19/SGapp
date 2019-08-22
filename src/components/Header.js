@@ -16,6 +16,7 @@ import Logo from './img/logo.png';
 const useStyles = (theme => ({
   root: {
     flexGrow: "-moz-initial",
+    width: "100%"
   },
   menuButton: {
     marginRight: theme.spacing(2),

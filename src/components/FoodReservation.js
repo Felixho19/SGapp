@@ -10,6 +10,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
 import Dish1 from './img/food1.jpg';
+
+import {Link as RouterLink} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -149,7 +151,7 @@ class FoodList extends React.Component {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button component={RouterLink} to='/food/1' size="small" color="primary">
               Learn More
             </Button>
           </CardActions>
@@ -168,7 +170,7 @@ class FoodList extends React.Component {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button component={RouterLink} to='/food/2'size="small" color="primary">
               Learn More
             </Button>
           </CardActions>
@@ -194,7 +196,7 @@ class FoodList extends React.Component {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button component={RouterLink} to='/food/3' size="small" color="primary">
               Learn More
             </Button>
           </CardActions>
@@ -213,7 +215,7 @@ class FoodList extends React.Component {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button component={RouterLink} to='/food/4' size="small" color="primary">
               Learn More
             </Button>
           </CardActions>

@@ -7,6 +7,8 @@ import Seat from './components/Seat';
 import Home from './components/Homepage';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import FoodDetail from './components/FoodDetail';
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
 import BgImage from './components/img/login_bg.jpg';
@@ -78,6 +80,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/food"
               component={FoodReservation} />
+            <Route exact path="/food/:id"
+              component={FoodDetail} />
             <Route exact path="/map"
               component={Map} />
             <Route exact path="/seat"
