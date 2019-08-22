@@ -2,9 +2,9 @@ import React from 'react';
 import {Carousel} from 'react-bootstrap';
 import Navigation from './Navigation';
 import Header from './Header';
-import ppt1 from './img/ppt1.webp';
+import ppt1 from './img/ppt1.jpg';
 import ppt2 from './img/ppt2.jpg';
-import ppt3 from './img/ppt3.webp';
+import ppt3 from './img/ppt3.jpg';
 import 'holderjs';
 
 class Home extends React.Component {

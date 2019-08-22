@@ -21,7 +21,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-
+import foods from './Data';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
@@ -108,10 +108,11 @@ const useStyles = theme => ({
   },
   card: {
     width: "45%",
+    height: 250,
     margin: theme.spacing(1)
   },
   media: {
-    height: 140,
+    height: 100,
   },
   deck: {
     justifyContent: 'center' 
@@ -122,12 +123,6 @@ const useStyles = theme => ({
 });
 class FoodList extends React.Component {
   render(){
-    const foodObjectList = [
-      {name: "Dish1"},
-      {name: "Dish2"},
-      {name: "Dish3"},
-      {name: "Dish4"},
-    ];
     const { classes } = this.props;
     return(
       <div>
@@ -141,12 +136,12 @@ class FoodList extends React.Component {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={Dish1}
-              title="Contemplative Reptile"
+              image={foods['1'].image}
+              title={foods['1'].name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Dish1's name
+                {foods['1'].name}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -160,12 +155,12 @@ class FoodList extends React.Component {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={Dish1}
-              title="Contemplative Reptile"
+              image={foods['2'].image}
+              title={foods['2'].name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Dish2's name
+                {foods['2'].name}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -186,12 +181,12 @@ class FoodList extends React.Component {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={Dish1}
-              title="Contemplative Reptile"
+              image={foods['3'].image}
+              title={foods['3'].name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Dish3's name
+                {foods['3'].name+" [NEW]"}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -205,12 +200,12 @@ class FoodList extends React.Component {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image={Dish1}
-              title="Contemplative Reptile"
+              image={foods['4'].image}
+              title={foods['4'].name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Dish4's name
+                {foods['4'].name}
               </Typography>
             </CardContent>
           </CardActionArea>

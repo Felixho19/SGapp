@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { withStyles, Button, Grid, Paper, Chip, GridListTileBar, GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
+import { withStyles, Button, Grid, Paper, Chip, 
+  Table, TableBody, TableRow, TableCell, GridListTileBar, 
+  GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Dish1 from './img/food1.jpg';
+import foods from './Data';
 import PropTypes from 'prop-types';
 
 const Theme = createMuiTheme({
@@ -34,6 +37,14 @@ const useStyles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2),
+  },
+  paperTable: {
+    marginTop: theme.spacing(3),
+    width: '100%',
+    marginBottom: theme.spacing(2),
+  },
+  table: {
+    width: "80%"
   },
   paperButton:{
     padding: theme.spacing(1)
@@ -94,13 +105,14 @@ class FoodDetail extends React.Component {
     };
     render() {
       const { classes } = this.props;
+      const {id} = this.props.match.params;
       return(
         <ThemeProvider theme={Theme}>
                 <GridList cellHeight={50} spacing={1} className={classes.gridList}>
-                    <GridListTile key={Dish1} cols={2} rows={4}>
-                      <img src={Dish1} alt={"Dish1"} />
+                    <GridListTile key={id} cols={2} rows={4}>
+                      <img src={foods[id].image} alt={foods[id].name} />
                       <GridListTileBar
-                        title={"Dish1"}
+                        title={foods[id].name}
                         titlePosition="bottom"
                         className={classes.titleBar}
                       />
@@ -111,18 +123,31 @@ class FoodDetail extends React.Component {
                     <Grid container>
                         <Typography variant="h6">Nutrition</Typography>
                     </Grid>
-                    <div className={classes.rootChip}>
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                      <Chip label="Basic Chip" className={classes.chip} />
-                    </div>
+                    <Paper className={classes.paperTable}>
+                      <Table className={classes.table} size="small">
+                        <TableBody>
+                          <TableRow key={"Calories"}>
+                            <TableCell component="th" scope="row">
+                                {"Calories"}
+                            </TableCell>
+                            <TableCell align="right">{foods[id].cal+" Cal"}</TableCell>
+                            </TableRow>
+                          {foods[id].nutrition.map(row => (
+                            <TableRow key={row.name}>
+                              <TableCell component="th" scope="row">
+                                {row.name}
+                              </TableCell>
+                              <TableCell align="right">{row.value+"%"}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </Paper>
                     <Grid container>
-                        <Typography variant="h6">Action</Typography>
+                        <Typography variant="h6">Description</Typography>
+                        <Typography variant="p">{foods[id].desc}</Typography>
                     </Grid>
+
                     <Grid container>
                     <Button onClick={this.handleOpen.bind(this)} variant="contained" color="primary" className={classes.button}>
                         Order Now
@@ -151,7 +176,7 @@ class FoodDetail extends React.Component {
                                   {[19, 20, 21].map(value => (
                                     <Grid key={value} item xs={4}>
                                       <Paper className={classes.paperButton}>
-                                        <Typography variant="p">
+                                        <Typography gutterBottom variant="p">
                                         {"Aug "+value}
                                         </Typography>
                                       </Paper>
@@ -167,7 +192,7 @@ class FoodDetail extends React.Component {
                                   {[...Array(6).keys()].map(v=>++v).map(value => (
                                     <Grid key={value} item xs={2}>
                                       <Paper className={classes.paperButton}>
-                                        <Typography variant="p">
+                                        <Typography gutterBottom variant="p">
                                         {value}
                                         </Typography>
                                       </Paper>
@@ -180,10 +205,10 @@ class FoodDetail extends React.Component {
                               </Grid>
                               <Grid item xs={12}>
                                 <Grid container justify="center" spacing={1}>
-                                  {["Speific Time", "Breakfast", "Lunch"].map(value => (
+                                  {["Specific Time", "Breakfast", "Lunch"].map(value => (
                                     <Grid key={value} item xs={4}>
                                       <Paper className={classes.paperButton}>
-                                        <Typography variant="p">
+                                        <Typography gutterBottom variant="p">
                                         {value}
                                         </Typography>
                                       </Paper>
