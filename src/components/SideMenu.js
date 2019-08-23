@@ -48,7 +48,6 @@ export default function SpeedDialTooltipOpen() {
   };
   const actions = [
     { icon: <CalendarTodayIcon />, name: 'Book table', act: handleClick2 },
-    { icon: <CheckCircleOutlineIcon/>, name: 'Confirm Check-in', act: handleClick3},
   ];
 
   return (
