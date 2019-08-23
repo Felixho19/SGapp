@@ -60,6 +60,7 @@ export default function SpeedDialTooltipOpen() {
         icon={<SpeedDialIcon />}
         onBlur={handleClose}
         onClose={handleClose}
+        onClick={handleClick}
         onFocus={handleOpen}
         onMouseEnter={handleOpen}
         onMouseLeave={handleClose}
