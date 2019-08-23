@@ -47,8 +47,8 @@ export default function SpeedDialTooltipOpen() {
     setOpen(false);
   };
   const actions = [
-    { icon: <CalendarTodayIcon />, name: 'Book table', act: handleClick3 },
-    { icon: <CheckCircleOutlineIcon/>, name: 'Confirm Check-in', act: handleClick2},
+    { icon: <CalendarTodayIcon />, name: 'Book table', act: handleClick2 },
+    { icon: <CheckCircleOutlineIcon/>, name: 'Confirm Check-in', act: handleClick3},
   ];
 
   return (
@@ -60,7 +60,6 @@ export default function SpeedDialTooltipOpen() {
         hidden={hidden}
         icon={<SpeedDialIcon />}
         onBlur={handleClose}
-        onClick={handleClick}
         onClose={handleClose}
         onFocus={handleOpen}
         onMouseEnter={handleOpen}
