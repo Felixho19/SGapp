@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { withStyles, Button, Grid, Paper, Chip, 
+import { withStyles, Button, Grid, Paper, 
   Table, TableBody, TableRow, TableCell, GridListTileBar, 
   GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import foods from './Data';
 import PropTypes from 'prop-types';
 
