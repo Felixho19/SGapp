@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link as RouterLink} from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
 import {BottomNavigation, BottomNavigationAction} from '@material-ui/core';
-import {HomeIcon, Flight, Search, FastfoodIcon} from '@material-ui/icons';
+import {HomeIcon, Flight, Search, Fastfood} from '@material-ui/icons';
 import PropTypes from 'prop-types';
 
 const useStyles = {
@@ -37,7 +37,7 @@ class Footer extends Component {
       <BottomNavigationAction component={RouterLink} to="/" label="Home" icon={<HomeIcon />} />
       <BottomNavigationAction label="Search" icon={<Search />} />
       <BottomNavigationAction label="Flights" icon={<Flight />} />
-      <BottomNavigationAction component={RouterLink} to='/food' label="Foods" icon={<FastfoodIcon />} />
+      <BottomNavigationAction component={RouterLink} to='/food' label="Foods" icon={<Fastfood />} />
     </BottomNavigation>
   );
 }
