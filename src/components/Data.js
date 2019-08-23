@@ -12,6 +12,11 @@ export default {
         {name:"Protein", value: 15},
         {name:"Carbohydrate", value: 40},
         {name:"Fat", value: 45},
+      ],
+      options : [
+        {name:"Half", cal:350},
+        {name:"Normal", cal:696},
+        {name:"Large", cal:896},
       ]
     },
     '2' : {
@@ -23,6 +28,11 @@ export default {
         {name:"Protein", value: 17},
         {name:"Carbohydrate", value: 55},
         {name:"(Healthy) Fat", value: 28},
+      ],
+      options : [
+        {name:"Half", cal:140},
+        {name:"Normal", cal:280},
+        {name:"Large", cal:420},
       ]
     },
     '3' : {
@@ -34,6 +44,11 @@ export default {
         {name:"Protein", value: 15},
         {name:"Carbohydrate", value: 48},
         {name:"Fat", value: 37},
+      ],
+      options : [
+        {name:"Half", cal:380},
+        {name:"Normal", cal:764.5},
+        {name:"Large", cal:1000},
       ]
     },
     '4' : {
@@ -45,6 +60,11 @@ export default {
         {name:"Protein", value: 15},
         {name:"Carbohydrate", value: 51},
         {name:"Fat", value: 34},
+      ],
+      options : [
+        {name:"Half", cal:380},
+        {name:"Normal", cal:540},
+        {name:"Large", cal:723},
       ]
     }
   };

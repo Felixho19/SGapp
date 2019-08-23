@@ -26,7 +26,6 @@ class Home extends React.Component {
                     />
                     <Carousel.Caption>
                     <h3>Singapore</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -40,7 +39,6 @@ class Home extends React.Component {
 
                     <Carousel.Caption>
                     <h3>Thailand</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -53,7 +51,6 @@ class Home extends React.Component {
                     />
                     <Carousel.Caption>
                     <h3>Cambodia</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 </Carousel>

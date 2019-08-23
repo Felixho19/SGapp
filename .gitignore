@@ -3,3 +3,4 @@ yarn.lock
 build
 package-lock.json
 src/components/.DS_Store
+.idea

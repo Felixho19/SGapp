@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import { withStyles, Button, Grid, Paper, 
   Table, TableBody, TableRow, TableCell, GridListTileBar, 
   GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
@@ -7,6 +6,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import foods from './Data';
 import PropTypes from 'prop-types';
+import TableReservation from './TableReservation';
+import FoodOrder from './FoodOrder';
 
 const Theme = createMuiTheme({
     palette: {
@@ -26,12 +27,6 @@ const useStyles = theme => ({
     flexGrow: 1,
     padding: theme.spacing(0, 3),
   },
-  modal: {
-    display: 'flex',
-    direction: "column",
-    justify: "center",
-    alignItems: "flex-end",
-  },
   paper: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
@@ -43,7 +38,7 @@ const useStyles = theme => ({
     marginBottom: theme.spacing(2),
   },
   table: {
-    width: "80%"
+    width: "100%"
   },
   paperButton:{
     padding: theme.spacing(1)
@@ -70,6 +65,7 @@ const useStyles = theme => ({
   gridList: {
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
+    width: '100%',
   },
   titleBar: {
     background:
@@ -108,7 +104,7 @@ class FoodDetail extends React.Component {
       return(
         <ThemeProvider theme={Theme}>
                 <GridList cellHeight={50} spacing={1} className={classes.gridList}>
-                    <GridListTile key={id} cols={2} rows={4}>
+                    <GridListTile key={id} cols={2} rows={4} style={{width : '100%'}}>
                       <img src={foods[id].image} alt={foods[id].name} />
                       <GridListTileBar
                         title={foods[id].name}
@@ -146,84 +142,7 @@ class FoodDetail extends React.Component {
                         <Typography variant="h6">Description</Typography>
                         <Typography variant="p">{foods[id].desc}</Typography>
                     </Grid>
-
-                    <Grid container>
-                    <Button onClick={this.handleOpen.bind(this)} variant="contained" color="primary" className={classes.button}>
-                        Order Now
-                    </Button>
-                    <Modal
-                        aria-labelledby="transition-modal-title"
-                        aria-describedby="transition-modal-description"
-                        className={classes.modal}
-                        open={this.state.open}
-                        onClose={this.handleClose.bind(this)}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{
-                          timeout: 500,
-                        }}
-                      >
-                        <Fade in={this.state.open}>
-                          <div className={classes.paper}>
-                            <div id="transition-modal-title">
-                            <Grid container className={classes.root} spacing={2}>
-                              <Grid item xs={12}>
-                                <Typography>Date</Typography>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Grid container justify="center" spacing={1}>
-                                  {[19, 20, 21].map(value => (
-                                    <Grid key={value} item xs={4}>
-                                      <Paper className={classes.paperButton}>
-                                        <Typography gutterBottom variant="p">
-                                        {"Aug "+value}
-                                        </Typography>
-                                      </Paper>
-                                    </Grid>
-                                  ))}
-                                </Grid>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Typography>Seats</Typography>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Grid container justify="center" spacing={1}>
-                                  {[...Array(6).keys()].map(v=>++v).map(value => (
-                                    <Grid key={value} item xs={2}>
-                                      <Paper className={classes.paperButton}>
-                                        <Typography gutterBottom variant="p">
-                                        {value}
-                                        </Typography>
-                                      </Paper>
-                                    </Grid>
-                                  ))}
-                                </Grid>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Typography>Time</Typography>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Grid container justify="center" spacing={1}>
-                                  {["Specific Time", "Breakfast", "Lunch"].map(value => (
-                                    <Grid key={value} item xs={4}>
-                                      <Paper className={classes.paperButton}>
-                                        <Typography gutterBottom variant="p">
-                                        {value}
-                                        </Typography>
-                                      </Paper>
-                                    </Grid>
-                                  ))}
-                                </Grid>
-                              </Grid>
-                              <Button component={Link} to="/" variant="contained" color="default" className={classes.button}>
-                                  Okay
-                              </Button>
-                            </Grid>
-                            </div>
-                          </div>
-                        </Fade>
-                      </Modal>
-                    </Grid>
+                    <FoodOrder id={id}/>
                   </Grid>
                 </Grid>
         </ThemeProvider>
