@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { Link as RouterLink} from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeIcon from '@material-ui/icons/Home';
-import Flight from '@material-ui/icons/Flight';
-import Search from '@material-ui/icons/Search';
-import CardTravel from '@material-ui/icons/CardTravel';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
+import {BottomNavigation, BottomNavigationAction} from '@material-ui/core';
+import {HomeIcon, Flight, Search, FastfoodIcon} from '@material-ui/icons';
 import PropTypes from 'prop-types';
 
 const useStyles = {

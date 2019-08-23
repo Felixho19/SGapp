@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 import { withStyles, Button, Grid, Paper, Chip, 
   Table, TableBody, TableRow, TableCell, GridListTileBar, 
   GridListTile, GridList, Typography, Modal, Backdrop, Fade} from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import Dish1 from './img/food1.jpg';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import foods from './Data';
 import PropTypes from 'prop-types';
 

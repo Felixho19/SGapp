@@ -1,30 +1,12 @@
 import React from 'react';
-import { withStyles, CssBaseline } from '@material-ui/core';
+import { withStyles, CssBaseline, AppBar, Toolbar, Typography, InputBase,
+  Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button} from '@material-ui/core';
 import { fade, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-
-import Dish1 from './img/food1.jpg';
-
 import {Link as RouterLink} from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import foods from './Data';
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-
+import SearchIcon from '@material-ui/icons/Search';
+import foods from './Data';
 import Rank from './Rank';
 
 const Theme = createMuiTheme({

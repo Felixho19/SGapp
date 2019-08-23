@@ -2,7 +2,7 @@ import F1 from './img/f1.jpg';
 import F2 from './img/f2.jpg';
 import F3 from './img/f3.jpg';
 import F4 from './img/f4.png';
-const foods = {
+export default {
     '1' : {
       image : F1,
       name : "Singapore Laksa",
@@ -48,4 +48,3 @@ const foods = {
       ]
     }
   };
-export default foods

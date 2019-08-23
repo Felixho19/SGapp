@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { withStyles, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 

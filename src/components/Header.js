@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, AppBar, Toolbar, Typography, IconButton, MenuItem, Menu } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import PropTypes from 'prop-types';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import Logo from './img/logo.png';
 
 const useStyles = (theme => ({

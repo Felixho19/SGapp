@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import TextField from '@material-ui/core/TextField';
-import PropTypes from 'prop-types';
-import Switch from '@material-ui/core/Switch';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { withStyles, AppBar, Toolbar, TextField, Switch, Button, CssBaseline,
+  FormControlLabel, Grid, Typography, Container} from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-
+import PropTypes from 'prop-types';
 
 const IOSSwitch = withStyles(theme => ({
     root: {
