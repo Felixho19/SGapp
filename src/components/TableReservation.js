@@ -50,7 +50,7 @@ class TableReservation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          open: false
+          open: true
         };
     }
     handleOpen = () => {
@@ -59,6 +59,7 @@ class TableReservation extends React.Component {
   
     handleClose = () => {
       this.setState({open:false});
+      this.props.setOpenBook(false);
     };
     render() {
       const { classes } = this.props;
@@ -131,7 +132,7 @@ class TableReservation extends React.Component {
                         ))}
                     </Grid>
                     </Grid>
-                    <Button component={Link} to="/" variant="contained" color="default" className={classes.button}>
+                    <Button component={Link} to="/food" variant="contained" color="default" className={classes.button} onClick={this.handleClose.bind(this)}>
                         Okay
                     </Button>
                 </Grid>

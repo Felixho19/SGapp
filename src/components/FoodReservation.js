@@ -7,6 +7,7 @@ import {Link as RouterLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SearchIcon from '@material-ui/icons/Search';
 import foods from './Data';
+import Menu from './SideMenu';
 import Rank from './Rank';
 
 const Theme = createMuiTheme({
@@ -246,8 +247,8 @@ class FoodReservation extends React.Component {
               <Typography variant="h5" color="secondary" className={classes.title}>
                   <b>Recommended dishes</b>
               </Typography>
-              <Typography variant="h7" color="secondary" className={classes.right_most}>
-                  <Link>See All</Link>
+              <Typography component={Link} variant="h7" color="secondary" className={classes.right_most}>
+                  See All
               </Typography>
             </Toolbar>
             <FoodList classes={classes}/>
@@ -266,6 +267,7 @@ class FoodReservation extends React.Component {
               </Typography>
             </Toolbar>
             <Rank />
+            <Menu />
         </ThemeProvider>
       );
     }
