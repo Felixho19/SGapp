@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles, CssBaseline, AppBar, Toolbar, Typography, Link, InputBase,
-  Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button} from '@material-ui/core';
+  Grid, Card, CardActionArea, CardActions, CardContent, CardMedia, Button,
+  FormControl, NativeSelect, FormHelperText} from '@material-ui/core';
 import { fade, createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import {Link as RouterLink} from 'react-router-dom';
@@ -54,6 +55,14 @@ const useStyles = theme => ({
       width: 'auto',
     }
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+    backgroundColor: theme.palette.common.white,
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -104,6 +113,42 @@ const useStyles = theme => ({
     backgroundColor: '#5c6bc0'
   }
 });
+
+const BootstrapInput = withStyles(theme => ({
+  root: {
+    'label + &': {
+      marginTop: theme.spacing(3),
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:focus': {
+      borderRadius: 4,
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+}))(InputBase);
+
 class FoodList extends React.Component {
   render(){
     const { classes } = this.props;
@@ -169,7 +214,7 @@ class FoodList extends React.Component {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {foods['3'].name+" [NEW]"}
+                {foods['3'].name}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -208,7 +253,8 @@ class FoodReservation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          open : false
+          open : false,
+          catagory: 2
         };
     }
     handleClick(){
@@ -217,6 +263,9 @@ class FoodReservation extends React.Component {
     handleClickAway(){
       this.setState({open: false});
     }
+    handleChange(event) {
+      this.setState({catagory: event.target.value});
+    }
     render() {
       const { classes } = this.props;
       return(
@@ -224,9 +273,24 @@ class FoodReservation extends React.Component {
             <div className={classes.root}>
             <AppBar position="static" color="primary">
                 <Toolbar>
-                <Typography variant="h5" color="default" className={classes.title}>
-                  Hong Kong
-                </Typography>
+                <form className={classes.title} autoComplete="off">
+                <FormControl className={classes.formControl}>
+                  <NativeSelect
+                    className={classes.selectEmpty}
+                    value={this.state.catagory}
+                    name="style"
+                    onChange={this.handleChange.bind(this)}
+                    input={<BootstrapInput />}
+                  >
+                    <option value="" disabled>
+                      Dish Style
+                    </option>
+                    <option value={1}>Hong Kong</option>
+                    <option value={2}>Singapore</option>
+                    <option value={3}>Japanese</option>
+                  </NativeSelect>
+                </FormControl>
+                  </form>
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
                     <SearchIcon />

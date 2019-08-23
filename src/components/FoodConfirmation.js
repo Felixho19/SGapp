@@ -22,70 +22,7 @@ const Theme = createMuiTheme({
     }
 });
 const useStyles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(0, 3),
-  },
-  modal: {
-    display: 'flex',
-    direction: "column",
-    justify: "center",
-    alignItems: "flex-end",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2),
-  },
-  paperTable: {
-    marginTop: theme.spacing(3),
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
-  table: {
-    width: "80%"
-  },
-  paperButton:{
-    padding: theme.spacing(1)
-  },
-  rootChip: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: theme.spacing(1),
-  },
-  title: {
-    flexGrow: 1,
-    fontFamily: 'arial',
-    position: 'relative',
-    marginLeft: 0,
-    width: '25%',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  gridList: {
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)',
-  },
-  titleBar: {
-    background:
-      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-  },
-  icon: {
-    color: 'white',
-  },
-  button: {
-    width: "100%",
-    margin: theme.spacing(1),
-  },
-  input: {
-    display: 'none',
-  },
+
 });
 
 class FoodConfirmation extends React.Component {
@@ -95,16 +32,8 @@ class FoodConfirmation extends React.Component {
           open: false
         };
     }
-    handleOpen = () => {
-      this.setState({open:true});
-    };
-  
-    handleClose = () => {
-      this.setState({open:false});
-    };
     render() {
       const { classes } = this.props;
-      const {id} = this.props.match.params;
       return(
         <ThemeProvider theme={Theme}>
           

@@ -37,7 +37,7 @@ export default {
     },
     '3' : {
       image : F3,
-      name : "Carbonara",
+      name : "Carbonara [NEW]",
       cal : 764.5,
       desc : "Carbonara is an Italian pasta dish from Rome made with egg, hard cheese, guanciale (or pancetta), and black pepper. The dish arrived at its modern form, with its current name, in the middle of the 20th century.",
       nutrition : [
