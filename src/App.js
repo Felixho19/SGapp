@@ -12,6 +12,7 @@ import FoodDetail from './components/FoodDetail';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { QRCode } from 'react-qr-svg';
 import BgImage from './components/img/login_bg.jpg';
+import foods from './components/Data';
 
 class QRCodePage extends Component {
   constructor(props) {
@@ -34,8 +35,6 @@ class QRCodePage extends Component {
     };
 
     return(
-      <div style={styles.root}>
-      <h1 style={styles.h1}>Lounge Reservation</h1>
       <div style={styles.qrcode}>
         <QRCode
           level="Q"
@@ -47,12 +46,15 @@ class QRCodePage extends Component {
             flight: "SQ865",
             departureTime: "18:50",
             destination: "Singapore Changi Airport (SIN)",
-            number: this.state.custNumber
+            number: this.state.custNumber,
+            foodOrder : {
+              'Singapore Laksa' : [
+                {'Normal' : 1}
+              ]
+            }
           })}
         />
       </div>
-
-    </div>
     );
   }
 }
@@ -86,7 +88,7 @@ class App extends Component {
               component={Map} />
             <Route exact path="/seat"
               component={Seat} />
-            <Route exact path="/QRcode"
+            <Route exact path="/checkout"
               component={QRCodePage} />
             <Route exact path="/login"
               component={Login} />
