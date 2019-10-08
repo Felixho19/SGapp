@@ -164,7 +164,6 @@ class Login extends Component {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={setAuth}
           >
             Log In
           </Button>
