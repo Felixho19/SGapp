@@ -13,6 +13,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import BgImage from './img/login_bg.jpg';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { Link } from "react-router-dom";
 
 const Theme = createMuiTheme({
     palette: {
@@ -30,7 +31,7 @@ const useStyles = theme => ({
     backgroundImage: `url(${BgImage})`,
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -54,7 +55,6 @@ function getToday(){
     return date;
 }
 
-
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -74,6 +74,7 @@ class Register extends Component {
         this.setState({requestorName : e.target.value});
     }
     handleSubmit(event){
+        //AJAX
         event.preventDefault();
         this.setState({redirect : true});
       }
@@ -82,7 +83,7 @@ class Register extends Component {
         return (
             <div>
             <ThemeProvider theme={Theme}>
-                <AppBar color="primary">
+                <AppBar color="primary" component={Link} to="/">
                     <Toolbar className={classes.root}>
                     <Typography variant="h6" color="inherit">
                         Register

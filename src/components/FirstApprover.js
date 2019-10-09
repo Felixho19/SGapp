@@ -13,6 +13,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import BgImage from './img/login_bg.jpg';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { Link } from "react-router-dom";
 
 const Theme = createMuiTheme({
     palette: {
@@ -30,7 +31,13 @@ const useStyles = theme => ({
     backgroundImage: `url(${BgImage})`,
   },
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  comment: {
+    marginTop: theme.spacing(10),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -43,6 +50,9 @@ const useStyles = theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 });
+const FIRST_APPROVE_URL = "";
+const GET_NEW_CUSTOMER_URL = ""
+const REJECT_URL = "";
 
 class FirstApprover extends Component {
     constructor(props) {
@@ -52,7 +62,6 @@ class FirstApprover extends Component {
             requestDate : '',
             reason : '',
             firstComment: '',
-            redirect : false
         };
     }
     loadRequestor(){
@@ -60,6 +69,7 @@ class FirstApprover extends Component {
             requestorName : "Felix",
             requestDate : "2019-10-9",
             reason: "work",
+            firstComment: '',
         }
         this.setState(data);
     }
@@ -68,18 +78,37 @@ class FirstApprover extends Component {
         this.setState({firstComment : e.target.value});
     }
     handleSubmit(event){
+        //AJAX
         event.preventDefault();
-        this.setState({redirect : true});
+        let state = this.state;
+        fetch(FIRST_APPROVE_URL,{
+            method: `POST`,
+            body: {
+                state
+            }
+        }).then(
+          //200
+          (res)=>{
+            if(res.ok) {
+                //Call next record
+                this.loadRequestor();
+            }
+          },
+          //500
+          (error)=>{
+             console.log(error);
+          }
+        );
       }
     render(){
         const { classes } = this.props;
         return (
             <div>
                 <ThemeProvider theme={Theme}>
-                    <AppBar color="primary">
+                    <AppBar color="primary" component={Link} to="/">
                         <Toolbar className={classes.root}>
                         <Typography variant="h6" color="inherit">
-                            Register
+                            First Approver : username
                         </Typography>
                         </Toolbar>
                     </AppBar>
@@ -94,12 +123,14 @@ class FirstApprover extends Component {
                                 <TextareaAutosize variant="outlined" margin="normal" label="Reason" aria-label="reason" type="text" id="reason" fullWidth value={this.state.reason} rows={3}  disabled={true}/>
                                 <CssBaseline />
                             </Grid>
-                            <Grid item>
-                            <FormLabel>1<sup>st</sup> Approver's comment : </FormLabel>
-                                <TextareaAutosize variant="outlined" margin="normal" aria-label="reason" type="text" id="firstcomment" fullWidth value={this.state.firstComment} onChange={this.handleFirstCommentChange.bind(this)} rows={3}  disabled={true}/>
+                            <Grid item className={classes.comment}>
+                                <FormLabel>1<sup>st</sup> Approver's comment : </FormLabel>
+                                <Grid container direction="column"> 
+                                    <TextareaAutosize variant="outlined" aria-label="reason" type="text" id="firstcomment" fullWidth value={this.state.firstComment} onChange={this.handleFirstCommentChange.bind(this)} rows={6} />
+                                </Grid>
                             </Grid>
                         </Grid>
-                        <Grid container direction="row" justify="center" alignItems="center" spacing={5} className={classes.main}>
+                        <Grid container direction="row" justify="center" alignItems="center" spacing={5}>
                             <Grid item>
                                 <Button onClick={this.loadRequestor.bind(this)} variant="contained" color="primary" className={classes.submit}>Get Next</Button>
                             </Grid>

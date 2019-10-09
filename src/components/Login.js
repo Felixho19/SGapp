@@ -55,11 +55,16 @@ const useStyles = theme => ({
     margin: theme.spacing(3),
   },
 });
-
+const AUTH_URL = null;
 const URLs = {
   "customer" : "register",
   "firstApprover" : "firstApprover",
   "secondApprover" : "secondApprover"
+};
+const identity = {
+  "customer" : <p>You are: Customer</p>,
+  "firstApprover" : <p>You are: 1<sup>st</sup> Approver</p>,
+  "secondApprover" : <p>You are: 2<sup>nd</sup> Approver</p>,
 };
 class Login extends Component {
     constructor(props) {
@@ -73,8 +78,34 @@ class Login extends Component {
         };
     }
     handleSubmit(event){
+      //AJAX
       event.preventDefault();
-      this.setState({redirect : true});
+      if(this.state.userType == ''){
+
+      }else if(AUTH_URL){
+        fetch(AUTH_URL,{
+          method: `POST`,
+          body: {
+              userType: this.state.userType,
+              username: this.state.username,
+              password: this.state.password,
+          }
+      }).then(
+        //200
+        (res)=>{
+          if(res.ok) {
+              this.setState({redirect : true});
+              return res.json();
+          }
+        },
+        //500
+        (error)=>{
+           console.log(error);
+        }
+      );
+      }else{
+        this.setState({redirect : true});
+      }
     }
     handleUsernameChange(event){
       event.preventDefault();
@@ -96,92 +127,37 @@ class Login extends Component {
     const { classes } = this.props;
     return (
         <div>
-        {this.state.redirect?<Redirect to={'/'+URLs[this.state.userType]} />:null}
-        <ThemeProvider theme={Theme}>
-        <AppBar color="primary">
-            <Toolbar className={classes.root}>
-            <Typography variant="h6" color="inherit">
-                Login
-            </Typography>
-            </Toolbar>
-        </AppBar>
-        </ThemeProvider>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={10}
-          className={classes.main}
-        >
-          <CssBaseline />
-          <Grid item className={classes.paper}>
-            <form className={classes.form} onSubmit={this.handleSubmit.bind(this)} noValidate>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="text"
-                label="Username"
-                name="text"
-                autoFocus
-                value={this.state.username}
-                onChange={this.handleUsernameChange.bind(this)}
-                disabled={this.state.disabled? "disable" : ""}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange.bind(this)}
-                disabled={this.state.disabled? "disable" : ""}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Log In
-              </Button>
-            </form>
+          {this.state.redirect?<Redirect to={'/'+URLs[this.state.userType]} />:null}
+          <ThemeProvider theme={Theme}>
+          <AppBar color="primary">
+              <Toolbar className={classes.root}>
+              <Typography variant="h6" color="inherit">
+                  Login
+              </Typography>
+              </Toolbar>
+          </AppBar>
+          </ThemeProvider>
+          <Grid container direction="row" justify="center" alignItems="center" spacing={10} className={classes.main}>
             <CssBaseline />
+            <Grid item className={classes.paper}>
+              <form className={classes.form} onSubmit={this.handleSubmit.bind(this)} noValidate>
+                <TextField variant="outlined" margin="normal" required fullWidth id="text" label="Username" name="text" autoFocus value={this.state.username} onChange={this.handleUsernameChange.bind(this)} disabled={this.state.disabled}/>
+                <TextField variant="outlined" margin="normal" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handlePasswordChange.bind(this)} disabled={this.state.disabled}/>
+                <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>Log In</Button>
+              </form>
+              <CssBaseline />
+            </Grid>
+            <Grid item className={classes.paper}>
+            <FormControl component="fieldset" className={classes.formControl}>
+              <FormLabel component="legend">{identity[this.state.userType]}</FormLabel>
+              <RadioGroup aria-label="identity" name="identity" defaultValue="customer" value={this.state.type} onClick={this.handleChange.bind(this)}>
+                <FormControlLabel value="customer" control={<Radio color="primary" />} label="Customer" labelPlacement="start"/>
+                <FormControlLabel value="firstApprover" control={<Radio color="primary" />} label={<p>1<sup>st</sup> Approver</p>} labelPlacement="start"/>
+                <FormControlLabel value="secondApprover" control={<Radio color="primary" />} label={<p>2<sup>nd</sup> Approver</p>} labelPlacement="start"/>
+              </RadioGroup>
+            </FormControl>
+            </Grid>
           </Grid>
-          <Grid item className={classes.paper}>
-          <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">You are: {this.state.userType}</FormLabel>
-            <RadioGroup aria-label="identity" name="identity" defaultValue="customer" value={this.state.type} onClick={this.handleChange.bind(this)}>
-              <FormControlLabel
-                value="customer"
-                control={<Radio color="primary" />}
-                label="Customer"
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                value="firstApprover"
-                control={<Radio color="primary" />}
-                label={<p>1<sup>st</sup> Approver</p>}
-                labelPlacement="start"
-              />
-              <FormControlLabel
-                value="secondApprover"
-                control={<Radio color="primary" />}
-                label={<p>2<sup>nd</sup> Approver</p>}
-                labelPlacement="start"
-              />
-            </RadioGroup>
-          </FormControl>
-          </Grid>
-        </Grid>
         </div>
         );
     }
