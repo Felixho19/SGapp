@@ -16,7 +16,6 @@ class App extends Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
-          <Header/>
           <Switch>
             <Route exact path="/register"
               component={Register} />
@@ -26,7 +25,6 @@ class App extends Component {
               component={SecondApprover} />
             <Route component={Login} />
           </Switch>
-          <Footer />
         </div>
       </Router>
     );

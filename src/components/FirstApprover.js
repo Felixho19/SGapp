@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import TextField from '@material-ui/core/TextField';
+import { FormLabel } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import BgImage from './img/login_bg.jpg';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const Theme = createMuiTheme({
     palette: {
@@ -25,10 +35,6 @@ const useStyles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
@@ -41,14 +47,74 @@ const useStyles = theme => ({
 class FirstApprover extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            requestorName : '',
+            requestDate : '',
+            reason : '',
+            firstComment: '',
+            redirect : false
+        };
     }
+    loadRequestor(){
+        let data = {
+            requestorName : "Felix",
+            requestDate : "2019-10-9",
+            reason: "work",
+        }
+        this.setState(data);
+    }
+    handleFirstCommentChange(e){
+        e.preventDefault();
+        this.setState({firstComment : e.target.value});
+    }
+    handleSubmit(event){
+        event.preventDefault();
+        this.setState({redirect : true});
+      }
     render(){
-    return (
-        <div>
-            <p>1st</p>
-        </div>
-        );
-    }
+        const { classes } = this.props;
+        return (
+            <div>
+                <ThemeProvider theme={Theme}>
+                    <AppBar color="primary">
+                        <Toolbar className={classes.root}>
+                        <Typography variant="h6" color="inherit">
+                            Register
+                        </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </ThemeProvider>
+                <form className={classes.form} onSubmit={this.handleSubmit.bind(this)} noValidate>
+                    <Grid container direction="column" justify="center" alignItems="center" spacing={5}>
+                        <Grid container direction="row" justify="center" alignItems="center" spacing={10} className={classes.main}>
+                            <Grid item className={classes.paper}>
+                                <TextField variant="outlined" margin="normal" required fullWidth id="name" label="Requester Name" name="name" autoFocus value={this.state.requestorName} disabled={true}/>
+                                <TextField variant="outlined" margin="normal" required fullWidth name="date" label="Request Date" type="text" id="date" value={this.state.requestDate} disabled={true}/>
+                                <FormLabel>Reason : </FormLabel>
+                                <TextareaAutosize variant="outlined" margin="normal" label="Reason" aria-label="reason" type="text" id="reason" fullWidth value={this.state.reason} rows={3}  disabled={true}/>
+                                <CssBaseline />
+                            </Grid>
+                            <Grid item>
+                            <FormLabel>1<sup>st</sup> Approver's comment : </FormLabel>
+                                <TextareaAutosize variant="outlined" margin="normal" aria-label="reason" type="text" id="firstcomment" fullWidth value={this.state.firstComment} onChange={this.handleFirstCommentChange.bind(this)} rows={3}  disabled={true}/>
+                            </Grid>
+                        </Grid>
+                        <Grid container direction="row" justify="center" alignItems="center" spacing={5} className={classes.main}>
+                            <Grid item>
+                                <Button onClick={this.loadRequestor.bind(this)} variant="contained" color="primary" className={classes.submit}>Get Next</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="primary" className={classes.submit}>Approve</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button variant="contained" color="primary" className={classes.submit}>Reject</Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </form>
+            </div>
+            );
+        }
 }
 
 FirstApprover.propTypes = {

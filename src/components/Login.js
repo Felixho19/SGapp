@@ -4,69 +4,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import BgImage from './img/login_bg.jpg';
-
-const IOSSwitch = withStyles(theme => ({
-    root: {
-      width: 42,
-      height: 26,
-      padding: 0,
-      margin: theme.spacing(1),
-    },
-    switchBase: {
-      padding: 1,
-      '&$checked': {
-        color: theme.palette.common.white,
-        '& + $track': {
-          backgroundColor: '#52d869',
-          opacity: 1,
-          border: 'none',
-        },
-      },
-      '&$focusVisible $thumb': {
-        color: '#52d869',
-        border: '6px solid #fff',
-      },
-    },
-    thumb: {
-      width: 24,
-      height: 24,
-    },
-    track: {
-      borderRadius: 26 / 2,
-      border: `1px solid ${theme.palette.grey[400]}`,
-      backgroundColor: theme.palette.grey[50],
-      opacity: 1,
-      transition: theme.transitions.create(['background-color', 'border']),
-    },
-    checked: {},
-    focusVisible: {},
-  }))(({ classes, ...props }) => {
-    return (
-      <Switch
-        focusVisibleClassName={classes.focusVisible}
-        disableRipple
-        classes={{
-          root: classes.root,
-          switchBase: classes.switchBase,
-          thumb: classes.thumb,
-          track: classes.track,
-          checked: classes.checked,
-        }}
-        {...props}
-      />
-    );
-  });
+import { Redirect } from 'react-router-dom';
 
 const Theme = createMuiTheme({
     palette: {
@@ -82,6 +32,7 @@ const useStyles = theme => ({
   },
   main: {
     backgroundImage: `url(${BgImage})`,
+
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -100,24 +51,54 @@ const useStyles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  formControl: {
+    margin: theme.spacing(3),
+  },
 });
 
+const URLs = {
+  "customer" : "register",
+  "firstApprover" : "firstApprover",
+  "secondApprover" : "secondApprover"
+};
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remember : false
+            disabled : true,
+            userType : '',
+            username : '',
+            password : '',
+            redirect : false
         };
     }
-    handleChange(name,event){
-        this.setState({ ...this.state, [name]: event.target.checked });
+    handleSubmit(event){
+      event.preventDefault();
+      this.setState({redirect : true});
+    }
+    handleUsernameChange(event){
+      event.preventDefault();
+      this.setState({username : event.target.value});
+    }
+    handlePasswordChange(event){
+      event.preventDefault();
+      this.setState({password : event.target.value});
+    }
+    handleChange(event){
+      if(event.target.value == "firstApprover" || event.target.value == "secondApprover"){
+        this.setState({ disabled : false , userType : event.target.value });
+      }else{
+        this.setState({ disabled : true , userType : event.target.value });
+      }
+      console.log(event.target.value);
     };
     render(){
-    const { setAuth , classes } = this.props;
+    const { classes } = this.props;
     return (
         <div>
+        {this.state.redirect?<Redirect to={'/'+URLs[this.state.userType]} />:null}
         <ThemeProvider theme={Theme}>
-        <AppBar position="static" color="primary">
+        <AppBar color="primary">
             <Toolbar className={classes.root}>
             <Typography variant="h6" color="inherit">
                 Login
@@ -125,63 +106,82 @@ class Login extends Component {
             </Toolbar>
         </AppBar>
         </ThemeProvider>
-        <Container component="main" maxWidth="xs" className={classes.main}>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="text"
-            label="PPS Club / KrisFlyer"
-            name="text"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="PIN"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<IOSSwitch
-                checked={this.state.remember}
-                onChange={this.handleChange.bind(this,'remember')}
-                value="remember"
-              />}
-            label="Stay logged in?"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Log In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          spacing={10}
+          className={classes.main}
+        >
+          <CssBaseline />
+          <Grid item className={classes.paper}>
+            <form className={classes.form} onSubmit={this.handleSubmit.bind(this)} noValidate>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="text"
+                label="Username"
+                name="text"
+                autoFocus
+                value={this.state.username}
+                onChange={this.handleUsernameChange.bind(this)}
+                disabled={this.state.disabled? "disable" : ""}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange.bind(this)}
+                disabled={this.state.disabled? "disable" : ""}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Log In
+              </Button>
+            </form>
+            <CssBaseline />
           </Grid>
-        </form>
-        <CssBaseline />
-      </div></Container>
+          <Grid item className={classes.paper}>
+          <FormControl component="fieldset" className={classes.formControl}>
+            <FormLabel component="legend">You are: {this.state.userType}</FormLabel>
+            <RadioGroup aria-label="identity" name="identity" defaultValue="customer" value={this.state.type} onClick={this.handleChange.bind(this)}>
+              <FormControlLabel
+                value="customer"
+                control={<Radio color="primary" />}
+                label="Customer"
+                labelPlacement="start"
+              />
+              <FormControlLabel
+                value="firstApprover"
+                control={<Radio color="primary" />}
+                label={<p>1<sup>st</sup> Approver</p>}
+                labelPlacement="start"
+              />
+              <FormControlLabel
+                value="secondApprover"
+                control={<Radio color="primary" />}
+                label={<p>2<sup>nd</sup> Approver</p>}
+                labelPlacement="start"
+              />
+            </RadioGroup>
+          </FormControl>
+          </Grid>
+        </Grid>
         </div>
         );
     }
